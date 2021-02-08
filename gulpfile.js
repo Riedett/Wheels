@@ -3,7 +3,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 const posthtml = require('gulp-posthtml');
 const include = require('posthtml-include');
 const newer = require('gulp-newer');
@@ -38,7 +38,7 @@ gulp.task('style:build', function() {
 
 gulp.task('js', function() {
   return gulp.src('source/js/**/*.js')
-  // .pipe(uglify())
+  .pipe(terser())
   .pipe(gulp.dest('build/js/'))
   .pipe(browserSync.stream());
 });
